@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import json
 import os
+import matplotlib.pyplot as plt
 
 # Create a CSV of fake sensor readings
 data = {
@@ -29,3 +30,14 @@ with open("sensor_metadata.json", "w") as f:
 # Create a folder of fake images
 os.makedirs("images", exist_ok=True)
 print("Data created successfully!")
+
+# Create a fake scan image for each patient
+for i in range(1,6):
+    fig, ax = plt.subplots()
+    ax.imshow(np.random.rand(100, 100), cmap='gray')
+    ax.set_title(f"Patient {i} Scan")
+    ax.axis('off')
+    plt.savefig(f"images/patient_{i}_scan.png")
+    plt.close()
+
+print("Images created successfully!")
