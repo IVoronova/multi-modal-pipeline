@@ -36,3 +36,7 @@ for i in range(1, 6):
 merged['image_path'] = image_paths
 print("\n Final Pipeline Output:")
 print(merged)
+
+print("Low Heart Rate Patients:\n", merged[merged['heart_rate'] < 70])
+print("Average Healthy Heart Rate:", np.round(merged['heart_rate'][merged['status']== 'healthy'].mean(), 1))
+print("Average Heart Rate by Status:\n", merged.groupby('status')['heart_rate'].mean().round(1).to_string())
